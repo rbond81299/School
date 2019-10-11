@@ -17,7 +17,8 @@
 
 template<typename Item_Type>
 SimpleEditor<Item_Type>::SimpleEditor() {
-    *start = NULL;
+    start = NULL;
+    size = 0;
 }
 
 template<typename Item_Type>
@@ -29,8 +30,22 @@ SimpleEditor<Item_Type>::~SimpleEditor() {
 }
 
 template<typename Item_Type>
+void SimpleEditor<Item_Type>::display()
+{
+    if (start == NULL) return;
+    struct DNode* temp = start;
+    for (int i = 1; i < size; i++)
+    {
+        std::cout << temp->data << std::endl;
+        temp = temp->next;
+    }
+    std::cout << temp->data << std::endl;
+}
+
+template<typename Item_Type>
 void SimpleEditor<Item_Type>::display(int lineNum)
 {
+    size++;
     if (start == NULL) return;
     
     struct DNode* temp = start;
@@ -45,6 +60,7 @@ void SimpleEditor<Item_Type>::display(int lineNum)
 template<typename Item_Type>
 void SimpleEditor<Item_Type>::insertStart(Item_Type s)
 {
+    size++;
     struct DNode* new_node = new DNode(s);
     if (start == NULL)
     {
@@ -65,6 +81,7 @@ void SimpleEditor<Item_Type>::insertStart(Item_Type s)
 template<typename Item_Type>
 void SimpleEditor<Item_Type>::insertEnd(Item_Type s)
 {
+
     struct DNode* new_node = new DNode(s);
     if (start == NULL)
     {

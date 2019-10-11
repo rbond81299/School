@@ -25,7 +25,7 @@ public:
     virtual ~SimpleEditor();
     void insertStart(Item_Type s);
     void insertEnd(Item_Type s);
-    void dispaly();
+    void display();
     void display(int lineNum);
 private:
     bool hasModified;
